@@ -1,0 +1,837 @@
+{
+    "meta": {
+        "version": "3.5.0",
+        "report_json_url": "https://raw.githubusercontent.com/eosc-synergy/trigger.git.assess.sqaaas/master/.report/assessment_output.json",
+        "report_permalink": "https://sqaaas.eosc-synergy.eu/full-assessment/report/https://raw.githubusercontent.com/eosc-synergy/trigger.git.assess.sqaaas/master/.report/assessment_output.json",
+        "timestamp": 1748266378.5660155
+    },
+    "repository": [
+        {
+            "url": "https://gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger.git",
+            "name": "dtgeo_geo3bcn/dtc-v2/trigger",
+            "tag": "master",
+            "commit_id": "91677f2cc3f5e885de6cb01e612a67d176a7d6df",
+            "is_main_repo": true,
+            "badge_status": "no_badge"
+        }
+    ],
+    "report": {
+        "QC.Acc": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Acc01": {
+                    "description": "Is the source code managed with a Version Control System?",
+                    "requirement_level": "MUST",
+                    "hint": "The source code shall be managed with Git and remain publicly available for this criterion to be successful. Please check <a href=\"https://git-scm.com/book/es/v2\" target=\"_blank\">Pro Git</a> docs about how to get started using Git tool. Guidelines provided by the most popular social coding platforms (<a href=\"https://docs.github.com/get-started\" target=\"_blank\">GitHub</a>, <a href=\"https://about.gitlab.com/get-started/\" target=\"_blank\">GitLab</a>) are also a good starting point",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Source code uses Git for version control",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": "scm",
+                                "version": "2.34.1",
+                                "docker": {
+                                    "image": "bitnami/git:2.34.1",
+                                    "reviewed": "2021-12-30"
+                                },
+                                "ci": {
+                                    "name": "QC.Acc gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree "
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/34/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Doc": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Doc06.1": {
+                    "description": "Is the software scope outlined in the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "A README file presents your software to the audience interested in your software project. Several online sites simplify the task of creating the README file, such as <a href=\"https://www.makeareadme.com/\" target=\"_blank\">Make a README</a> or <a href=\"https://readme.so/\" target=\"_blank\">readme.so</a> sites. Be sure to add it to the code repository's root path",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "A README file is present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 2094}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 2094
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc06.3": {
+                    "description": "Does the project establish a code of conduct for its participants?",
+                    "requirement_level": "MUST",
+                    "hint": "A CODE_OF_CONDUCT file sets the path for a constructive, respectful and positive atmosphere among all the contributors in your software project. Of course you can define your own, but in case you want to rely on external and widely-adopted code of conducts check out some of the most popular ones: <a href=\"https://contributor-covenant.org/\" target=\"_blank\">Contributor Covenant</a> or <a href=\"https://web.archive.org/web/20200330154000/http://citizencodeofconduct.org/\" target=\"_blank\">Citizen Code of Conduct</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CODE_OF_CONDUCT file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 2094}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 2094
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc06.2": {
+                    "description": "Is there a clear path or guidelines on how to contribute to the code?",
+                    "requirement_level": "MUST",
+                    "hint": "A CONTRIBUTING file shall be present in the root path of the code repository describing the expected workflow to follow when adding contributions. Please check <a href=\"https://mozillascience.github.io/working-open-workshop/contributing/\" target=\"_blank\">Mozilla's guidelines</a> and <a href=\"https://github.com/github/docs/blob/main/CONTRIBUTING.md\" target=\"_blank\">GitHub's CONTRIBUTING.md example</a> to get inspired on how to write a good CONTRIBUTING file",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CONTRIBUTING file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 2094}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 2094
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc01.1": {
+                    "description": "Are docs managed in the same repository as code?",
+                    "requirement_level": "MAY",
+                    "hint": "This subcriterion will succeed if the documentation files exist on the same repository as the source code, e.g. under a <code>docs/</code> folder",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Documentation resides in the same repository as code",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": null,
+                                "version": null,
+                                "docker": null,
+                                "ci": {
+                                    "name": "QC.Doc gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree "
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/52/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc02.X": {
+                    "description": "Are docs following a style for the Markdown markup language?",
+                    "requirement_level": "MAY",
+                    "hint": "When using a docs-as-code approach, the style of the markup language is being checked. SQAaaS relies on <a href=\"https://github.com/markdownlint/markdownlint/\" target=\"_blank\">markdownlint</a> for Markdown files and <a href=\"https://github.com/twolfson/restructuredtext-lint/\" target=\"_blank\">restructuredtext-lint</a> for reStructuredText",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Docs are not fully compliant with markdownlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-markdownlint",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "markdownlint",
+                                "lang": "Markdown",
+                                "version": "0.11.0",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/markdownlint/Dockerfile",
+                                    "reviewed": "1970-01-01"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger markdownlint",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "mdl --json  ."
+                                    ],
+                                    "stdout_text": "[{\"filename\":\"./README.md\",\"line\":6,\"rule\":\"MD002\",\"aliases\":[\"first-header-h1\"],\"description\":\"First header should be a top level header\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md002---first-header-should-be-a-top-level-header\"},{\"filename\":\"./README.md\",\"line\":101,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md012---multiple-consecutive-blank-lines\"},{\"filename\":\"./README.md\",\"line\":2,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./README.md\",\"line\":8,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./README.md\",\"line\":62,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md032---lists-should-be-surrounded-by-blank-lines\"}]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/61/log?consoleFull"
+                                },
+                                "level": "RECOMMENDED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "./README.md": {
+                                    "MD002": {
+                                        "description": "First header should be a top level header",
+                                        "line": [
+                                            6
+                                        ]
+                                    },
+                                    "MD012": {
+                                        "description": "Multiple consecutive blank lines",
+                                        "line": [
+                                            101
+                                        ]
+                                    },
+                                    "MD013": {
+                                        "description": "Line length",
+                                        "line": [
+                                            2,
+                                            8
+                                        ]
+                                    },
+                                    "MD032": {
+                                        "description": "Lists should be surrounded by blank lines",
+                                        "line": [
+                                            62
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 40,
+                "total_subcriteria": 5,
+                "success_subcriteria": 2
+            }
+        },
+        "QC.Lic": {
+            "valid": false,
+            "subcriteria": {},
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 0,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Sec": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Sec02": {
+                    "description": "Is the source code passing Static Analysis Security Testing (SAST)?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the SAST tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Found security weaknesses when performing SAST checks with bandit tool",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-bandit",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "bandit",
+                                "lang": "Python",
+                                "version": "1.7.4",
+                                "docker": {
+                                    "dockerfile": "QC.Sec/bandit/Dockerfile",
+                                    "reviewed": "2022-03-04"
+                                },
+                                "ci": {
+                                    "name": "QC.Sec gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger bandit",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "bandit -f json --quiet  --confidence-level high --severity-level high --recursive  ."
+                                    ],
+                                    "stdout_text": "{\n  \"errors\": [],\n  \"generated_at\": \"2025-05-26T13:30:07Z\",\n  \"metrics\": {\n    \"./file_manager.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 42,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./trigger.py\": {\n      \"CONFIDENCE.HIGH\": 4,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 1,\n      \"SEVERITY.LOW\": 3,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 102,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"_totals\": {\n      \"CONFIDENCE.HIGH\": 4,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 1,\n      \"SEVERITY.LOW\": 3,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 144,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    }\n  },\n  \"results\": [\n    {\n      \"code\": \"58         # Run the commands inside the container\\n59         subprocess.run(full_command, shell=True, check=True)\\n60         print(f\\\"FALL3D simulation completed successfully with input file: {input_file}\\\")\\n\",\n      \"col_offset\": 8,\n      \"filename\": \"./trigger.py\",\n      \"issue_confidence\": \"HIGH\",\n      \"issue_cwe\": {\n        \"id\": 78,\n        \"link\": \"https://cwe.mitre.org/data/definitions/78.html\"\n      },\n      \"issue_severity\": \"HIGH\",\n      \"issue_text\": \"subprocess call with shell=True identified, security issue.\",\n      \"line_number\": 59,\n      \"line_range\": [\n        59\n      ],\n      \"more_info\": \"https://bandit.readthedocs.io/en/1.7.4/plugins/b602_subprocess_popen_with_shell_equals_true.html\",\n      \"test_id\": \"B602\",\n      \"test_name\": \"subprocess_popen_with_shell_equals_true\"\n    }\n  ]\n}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "errors": [],
+                                "generated_at": "2025-05-26T13:30:07Z",
+                                "metrics": {
+                                    "./file_manager.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 42,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./trigger.py": {
+                                        "CONFIDENCE.HIGH": 4,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 1,
+                                        "SEVERITY.LOW": 3,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 102,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "_totals": {
+                                        "CONFIDENCE.HIGH": 4,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 1,
+                                        "SEVERITY.LOW": 3,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 144,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    }
+                                },
+                                "results": [
+                                    {
+                                        "code": "58         # Run the commands inside the container\n59         subprocess.run(full_command, shell=True, check=True)\n60         print(f\"FALL3D simulation completed successfully with input file: {input_file}\")\n",
+                                        "col_offset": 8,
+                                        "filename": "./trigger.py",
+                                        "issue_confidence": "HIGH",
+                                        "issue_cwe": {
+                                            "id": 78,
+                                            "link": "https://cwe.mitre.org/data/definitions/78.html"
+                                        },
+                                        "issue_severity": "HIGH",
+                                        "issue_text": "subprocess call with shell=True identified, security issue.",
+                                        "line_number": 59,
+                                        "line_range": [
+                                            59
+                                        ],
+                                        "more_info": "https://bandit.readthedocs.io/en/1.7.4/plugins/b602_subprocess_popen_with_shell_equals_true.html",
+                                        "test_id": "B602",
+                                        "test_name": "subprocess_popen_with_shell_equals_true"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Sty": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Sty01": {
+                    "description": "Is the software product following a style standard for Python files?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the linter tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Python files are not fully compliant with flake8 (pycodestyle, pyflakes, mccabe) standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-flake8",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "flake8",
+                                "lang": "Python",
+                                "version": "4.0.1 (mccabe: 0.6.1, pycodestyle: 2.8.0, pyflakes: 2.4.0)",
+                                "docker": {
+                                    "image": "pipelinecomponents/flake8:0.9.0",
+                                    "reviewed": "2022-03-04"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger flake8",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "flake8 ."
+                                    ],
+                                    "stdout_text": "./file_manager.py:3:1: E302 expected 2 blank lines, found 1\n./file_manager.py:4:31: E231 missing whitespace after ','\n./file_manager.py:9:22: E225 missing whitespace around operator\n./file_manager.py:10:5: E301 expected 1 blank line, found 0\n./file_manager.py:12:80: E501 line too long (83 > 79 characters)\n./file_manager.py:15:80: E501 line too long (107 > 79 characters)\n./file_manager.py:17:1: W293 blank line contains whitespace\n./file_manager.py:24:1: E302 expected 2 blank lines, found 0\n./file_manager.py:29:21: E225 missing whitespace around operator\n./file_manager.py:31:22: E225 missing whitespace around operator\n./file_manager.py:32:1: W293 blank line contains whitespace\n./file_manager.py:33:28: E231 missing whitespace after ','\n./file_manager.py:34:21: E225 missing whitespace around operator\n./file_manager.py:35:1: W293 blank line contains whitespace\n./file_manager.py:43:5: E301 expected 1 blank line, found 0\n./file_manager.py:43:35: E231 missing whitespace after ','\n./file_manager.py:43:43: E231 missing whitespace after ','\n./file_manager.py:44:22: E225 missing whitespace around operator\n./file_manager.py:45:5: E301 expected 1 blank line, found 0\n./file_manager.py:45:30: E231 missing whitespace after ','\n./file_manager.py:45:47: E231 missing whitespace after ','\n./file_manager.py:46:16: E225 missing whitespace around operator\n./file_manager.py:49:1: W391 blank line at end of file\n./trigger.py:9:1: F403 'from pycompss.api.parameter import *' used; unable to detect undefined names\n./trigger.py:21:1: E302 expected 2 blank lines, found 0\n./trigger.py:23:80: E501 line too long (84 > 79 characters)\n./trigger.py:30:80: E501 line too long (81 > 79 characters)\n./trigger.py:31:80: E501 line too long (117 > 79 characters)\n./trigger.py:43:1: E302 expected 2 blank lines, found 1\n./trigger.py:44:1: E265 block comment should start with '# '\n./trigger.py:45:21: F405 'FILE_IN_STDIN' may be undefined, or defined from star imports: pycompss.api.parameter\n./trigger.py:48:7: E225 missing whitespace around operator\n./trigger.py:48:33: E231 missing whitespace after ','\n./trigger.py:60:76: F405 'input_file' may be undefined, or defined from star imports: pycompss.api.parameter\n./trigger.py:60:80: E501 line too long (88 > 79 characters)\n./trigger.py:66:80: E501 line too long (93 > 79 characters)\n./trigger.py:67:1: W293 blank line contains whitespace\n./trigger.py:74:1: E302 expected 2 blank lines, found 0\n./trigger.py:74:26: E231 missing whitespace after ','\n./trigger.py:75:7: E225 missing whitespace around operator\n./trigger.py:76:27: E712 comparison to True should be 'if cond is True:' or 'if cond:'\n./trigger.py:76:27: E225 missing whitespace around operator\n./trigger.py:77:11: E225 missing whitespace around operator\n./trigger.py:78:22: E225 missing whitespace around operator\n./trigger.py:79:21: E225 missing whitespace around operator\n./trigger.py:80:16: E225 missing whitespace around operator\n./trigger.py:80:54: E231 missing whitespace after ','\n./trigger.py:80:57: E231 missing whitespace after ','\n./trigger.py:82:1: W293 blank line contains whitespace\n./trigger.py:83:1: E302 expected 2 blank lines, found 1\n./trigger.py:83:24: E231 missing whitespace after ','\n./trigger.py:110:1: E302 expected 2 blank lines, found 1\n./trigger.py:127:1: E303 too many blank lines (3)",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/88/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": "./file_manager.py:3:1: E302 expected 2 blank lines, found 1\n./file_manager.py:4:31: E231 missing whitespace after ','\n./file_manager.py:9:22: E225 missing whitespace around operator\n./file_manager.py:10:5: E301 expected 1 blank line, found 0\n./file_manager.py:12:80: E501 line too long (83 > 79 characters)\n./file_manager.py:15:80: E501 line too long (107 > 79 characters)\n./file_manager.py:17:1: W293 blank line contains whitespace\n./file_manager.py:24:1: E302 expected 2 blank lines, found 0\n./file_manager.py:29:21: E225 missing whitespace around operator\n./file_manager.py:31:22: E225 missing whitespace around operator\n./file_manager.py:32:1: W293 blank line contains whitespace\n./file_manager.py:33:28: E231 missing whitespace after ','\n./file_manager.py:34:21: E225 missing whitespace around operator\n./file_manager.py:35:1: W293 blank line contains whitespace\n./file_manager.py:43:5: E301 expected 1 blank line, found 0\n./file_manager.py:43:35: E231 missing whitespace after ','\n./file_manager.py:43:43: E231 missing whitespace after ','\n./file_manager.py:44:22: E225 missing whitespace around operator\n./file_manager.py:45:5: E301 expected 1 blank line, found 0\n./file_manager.py:45:30: E231 missing whitespace after ','\n./file_manager.py:45:47: E231 missing whitespace after ','\n./file_manager.py:46:16: E225 missing whitespace around operator\n./file_manager.py:49:1: W391 blank line at end of file\n./trigger.py:9:1: F403 'from pycompss.api.parameter import *' used; unable to detect undefined names\n./trigger.py:21:1: E302 expected 2 blank lines, found 0\n./trigger.py:23:80: E501 line too long (84 > 79 characters)\n./trigger.py:30:80: E501 line too long (81 > 79 characters)\n./trigger.py:31:80: E501 line too long (117 > 79 characters)\n./trigger.py:43:1: E302 expected 2 blank lines, found 1\n./trigger.py:44:1: E265 block comment should start with '# '\n./trigger.py:45:21: F405 'FILE_IN_STDIN' may be undefined, or defined from star imports: pycompss.api.parameter\n./trigger.py:48:7: E225 missing whitespace around operator\n./trigger.py:48:33: E231 missing whitespace after ','\n./trigger.py:60:76: F405 'input_file' may be undefined, or defined from star imports: pycompss.api.parameter\n./trigger.py:60:80: E501 line too long (88 > 79 characters)\n./trigger.py:66:80: E501 line too long (93 > 79 characters)\n./trigger.py:67:1: W293 blank line contains whitespace\n./trigger.py:74:1: E302 expected 2 blank lines, found 0\n./trigger.py:74:26: E231 missing whitespace after ','\n./trigger.py:75:7: E225 missing whitespace around operator\n./trigger.py:76:27: E712 comparison to True should be 'if cond is True:' or 'if cond:'\n./trigger.py:76:27: E225 missing whitespace around operator\n./trigger.py:77:11: E225 missing whitespace around operator\n./trigger.py:78:22: E225 missing whitespace around operator\n./trigger.py:79:21: E225 missing whitespace around operator\n./trigger.py:80:16: E225 missing whitespace around operator\n./trigger.py:80:54: E231 missing whitespace after ','\n./trigger.py:80:57: E231 missing whitespace after ','\n./trigger.py:82:1: W293 blank line contains whitespace\n./trigger.py:83:1: E302 expected 2 blank lines, found 1\n./trigger.py:83:24: E231 missing whitespace after ','\n./trigger.py:110:1: E302 expected 2 blank lines, found 1\n./trigger.py:127:1: E303 too many blank lines (3)"
+                        },
+                        {
+                            "valid": true,
+                            "message": "JSON files are compliant with jsonlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "jsonlint",
+                                "lang": "JSON",
+                                "version": "1.6.3",
+                                "docker": {
+                                    "dockerfile": "QC.Sty/jsonlint/Dockerfile",
+                                    "reviewed": "2021-11-23"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger jsonlint",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "jsonlint-cli \"**/*.json\""
+                                    ],
+                                    "stdout_text": "",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/97/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Uni": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Uni01": {
+                    "description": "Are the tests passing through an automated means?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the failing test cases found by the {tool_name} tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Test cases are not passing using None testing framework",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "pytest",
+                                "lang": "Python",
+                                "version": "7.1.3",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-pytest:7.1.3-alpha",
+                                    "reviewed": "2023-08-09"
+                                },
+                                "ci": {
+                                    "name": "QC.Uni gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger pytest",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "pytest  --json-report  --json-report-indent 4"
+                                    ],
+                                    "stdout_text": "============================= test session starts ==============================\nplatform linux -- Python 3.9.17, pytest-7.1.3, pluggy-1.2.0\nrootdir: /sqaaas-build/gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger\nplugins: metadata-3.0.0, json-report-1.5.0\ncollected 0 items\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .report.json\n============================ no tests ran in 0.01s =============================",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/106/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Ver": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Ver01.0": {
+                    "description": "Are tags being used for releasing software",
+                    "requirement_level": "MUST",
+                    "hint": "Git tags are a convenient way to release software. This subcriterion checks if any git tag is present in the code history. More info on it-scm.com/book/en/v2/Git-Basics-Tagging\" target=\"_blank\">git tagging</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "The code repository does not use tags for releasing new software versions",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "[]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/115/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": []
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                },
+                "QC.Ver01": {
+                    "description": "Is the latest release compliant with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Latest tag must be compliant with <a href=\"https://semver.org\" target=\"_blank\">SemVer specification</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Latest release tag None found, but is not SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "[]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/115/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": []
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                },
+                "QC.Ver02": {
+                    "description": "Are all release tags with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Existent release tags shall be <a href=\"https://semver.org\" target=\"_blank\">SemVer</a> compliant for this subcriterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "All release tags are SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "[]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/trigger.git.assess.sqaaas/job/master/1/execution/node/115/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/trigger.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": []
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 33,
+                "total_subcriteria": 3,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Met": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Met01": {
+                    "description": "Is the software citable?",
+                    "valid": false,
+                    "hint": "The two formats for software citation supported by SQAaaS are: 1) <a href=\"https://codemeta.github.io/\" target=\"_blank\">CodeMeta</a> and 2) <a href=\"https://citation-file-format.github.io/\" target=\"_blank\">Citation File Format (CFF)</a>. While CodeMeta provides you with a more comprehensive description, CFF is a more lightweight, good-enough approach to software (with built-in support by GitHub) citation. Both provide tools (<a href=\"https://codemeta.github.io/codemeta-generator/\" target=\"_blank\">CodeMeta generator</a>, <a href=\"https://citation-file-format.github.io/cff-initializer-javascript/#/\" target=\"_blank\">CFFINIT</a>)to easily generate a working citation file. Once having the file, be sure to add it to the root path of your code repo.",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <CodeMeta> in repository searching by extensions or filenames\nNo matching files found for language <Citation File Format> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        }
+    },
+    "badge": {
+        "software": {
+            "criteria": {
+                "bronze": {
+                    "to_fulfill": [
+                        "QC.Doc",
+                        "QC.Acc",
+                        "QC.Lic"
+                    ],
+                    "missing": [
+                        "QC.Doc",
+                        "QC.Lic"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc"
+                    ]
+                },
+                "silver": {
+                    "to_fulfill": [
+                        "QC.Doc",
+                        "QC.Ver",
+                        "QC.Met",
+                        "QC.Acc",
+                        "QC.Lic"
+                    ],
+                    "missing": [
+                        "QC.Ver",
+                        "QC.Met",
+                        "QC.Doc",
+                        "QC.Lic"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc"
+                    ]
+                },
+                "gold": {
+                    "to_fulfill": [
+                        "QC.Doc",
+                        "QC.Ver",
+                        "QC.Met",
+                        "QC.Acc",
+                        "QC.Lic",
+                        "QC.Uni",
+                        "QC.Sty",
+                        "QC.Sec"
+                    ],
+                    "missing": [
+                        "QC.Doc",
+                        "QC.Ver",
+                        "QC.Met",
+                        "QC.Lic",
+                        "QC.Uni",
+                        "QC.Sty",
+                        "QC.Sec"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc"
+                    ]
+                }
+            },
+            "data": {}
+        }
+    }
+}
