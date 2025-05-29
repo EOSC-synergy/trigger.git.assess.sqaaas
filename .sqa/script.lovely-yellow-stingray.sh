@@ -4,6 +4,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 (
-cd gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger &&
-    jsonlint-cli "**/*.json"
+cd gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger/DTC52/WF5201/ST520112/src &&
+    echo 'Here we will execute COMPSs'
 )

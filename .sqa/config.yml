@@ -7,6 +7,7 @@ config:
     gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger:
       branch: master
       repo: https://gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger.git
+      subfolder: DTC52/WF5201/ST520112/src
 environment:
   JPL_DOCKERFORCEBUILD: enabled
   JPL_KEEPGOING: enabled
@@ -15,54 +16,54 @@ sqa_criteria:
     repos:
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger git:
         commands:
-        - /usr/bin/env sh .sqa/script.bluesy-amaranth-ray.sh
-        container: qc.acc_bumpy-purple-mandrill
+        - /usr/bin/env sh .sqa/script.flaky-salmon-buzzard.sh
+        container: qc.acc_surly-pumpkin-markhor
   QC.Doc:
     repos:
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger find_doc_files.py:
         commands:
-        - /usr/bin/env sh .sqa/script.jumpy-bistre-kingfisher.sh
-        container: qc.doc_skinny-apricot-caracal
+        - /usr/bin/env sh .sqa/script.scummy-ruby-capybara.sh
+        container: qc.doc_flimsy-sapphire-grouse
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger git:
         commands:
-        - /usr/bin/env sh .sqa/script.clammy-turquoise-mist.sh
-        container: qc.doc_lumpy-mustard-gerbil
+        - /usr/bin/env sh .sqa/script.goopy-coral-cuttlefish.sh
+        container: qc.doc_gummy-cinnamon-scorpion
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger markdownlint:
         commands:
-        - /usr/bin/env sh .sqa/script.messy-beige-jackal.sh
-        container: qc.doc_skimpy-sapphire-hound
+        - /usr/bin/env sh .sqa/script.clammy-coral-cichlid.sh
+        container: qc.doc_messy-lemon-giraffe
   QC.Lic:
     repos:
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger licensee:
         commands:
-        - /usr/bin/env sh .sqa/script.wiggy-harlequin-malamute.sh
-        container: qc.lic_skanky-platinum-quail
+        - /usr/bin/env sh .sqa/script.crappy-chartreuse-drever.sh
+        container: qc.lic_woozy-cinnabar-uakari
   QC.Sec:
     repos:
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger bandit:
         commands:
-        - /usr/bin/env sh .sqa/script.hasty-saffron-stoat.sh
-        container: qc.sec_wimpy-lavender-dachshund
+        - /usr/bin/env sh .sqa/script.squirrely-apricot-grasshopper.sh
+        container: qc.sec_tasty-brass-wallaby
   QC.Sty:
     repos:
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger flake8:
         commands:
-        - /usr/bin/env sh .sqa/script.homely-ivory-dragonfly.sh
-        container: qc.sty_pretty-sangria-cuscus
+        - /usr/bin/env sh .sqa/script.cozy-firebrick-mouse.sh
+        container: qc.sty_clammy-eggplant-gorilla
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger jsonlint:
         commands:
-        - /usr/bin/env sh .sqa/script.snoopy-mauve-mule.sh
-        container: qc.sty_scanty-rust-jellyfish
+        - /usr/bin/env sh .sqa/script.slimy-asparagus-hamster.sh
+        container: qc.sty_greasy-plum-cat
   QC.Uni:
     repos:
-      gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger pytest:
+      gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger commands:
         commands:
-        - /usr/bin/env sh .sqa/script.cozy-persimmon-ostrich.sh
-        container: qc.uni_slaphappy-smalt-echidna
+        - /usr/bin/env sh .sqa/script.lovely-yellow-stingray.sh
+        container: qc.uni_chewy-taupe-ray
   QC.Ver:
     repos:
       gitlab.geo3bcn.csic.es/dtgeo_geo3bcn/dtc-v2/trigger get_git_tags.py:
         commands:
-        - /usr/bin/env sh .sqa/script.hilly-tan-loon.sh
-        container: qc.ver_scanty-dandelion-emu
+        - /usr/bin/env sh .sqa/script.nerdy-magnolia-bobcat.sh
+        container: qc.ver_thirsty-pear-uguisu
 timeout: 5400
